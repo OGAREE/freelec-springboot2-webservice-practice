@@ -3,9 +3,11 @@ package com.jojoldu.book.springboot.config.auth.dto;
 import com.jojoldu.book.springboot.domain.user.Role;
 import com.jojoldu.book.springboot.domain.user.User;
 import lombok.Builder;
+import lombok.Getter;
 
 import java.util.Map;
 
+@Getter
 public class OAuthAttributes {
     private Map<String, Object> attributes;
     private String nameAttributekey;
@@ -26,7 +28,7 @@ public class OAuthAttributes {
         return ofGoogle(userNameAttributeName, attributes);
     }
 
-    public static OAuthAttributes ofGoogle(String userNameAttributeName, Map<String, Object> attributes){
+    private static OAuthAttributes ofGoogle(String userNameAttributeName, Map<String, Object> attributes){
         return OAuthAttributes.builder()
                 .name((String) attributes.get("name"))
                 .email((String) attributes.get("email"))
